@@ -1,14 +1,16 @@
 <div class="form-group">
 	{{ Form::label('name', 'Nombre*') }}
     {{ Form::text('name', null, ['class' => 'form-control', 'required' => 'required']) }}
-</div>
-<div class="form-group">
-	{{ Form::label('slug', 'URL Amigable*') }}
-    {{ Form::text('slug', null, ['class' => 'form-control', 'required' => 'required']) }}
+    @error('name')
+    	<div class="alert alert-danger">{{ $message }}</div>
+	@enderror
 </div>
 <div class="form-group">
 	{{ Form::label('description', 'Descripción*') }}
     {{ Form::text('description', null, ['class' => 'form-control', 'required' => 'required']) }}
+    @error('description')
+    	<div class="alert alert-danger">{{ $message }}</div>
+	@enderror
 </div>
 <hr>
 <h5>Permiso Especial</h5>
@@ -32,5 +34,5 @@
 	</ul>
 </div>
 <div class="form-group">
-    {{ Form::submit('Guardar', null, ['class' => 'btn btn-sm btn-primary']) }}
+    {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
 </div>

@@ -36,6 +36,6 @@
         </div>
         <!-- /.row -->
   </div>
-</div>
+</section>
 
 @endsection

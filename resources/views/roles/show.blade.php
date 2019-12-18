@@ -19,7 +19,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Roles</h3>
+                <h3 class="card-title">Rol</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -36,6 +36,6 @@
         </div>
         <!-- /.row -->
   </div>
-</div>
+</section>
 
 @endsection

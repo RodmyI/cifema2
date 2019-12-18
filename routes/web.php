@@ -74,6 +74,9 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('products', 'ProductController@index')->name('products.index')
 			->middleware('permission:products.index');
 
+	Route::post('products', 'ProductController@index')->name('products.index')
+			->middleware('permission:products.index');
+
 	Route::get('products/create', 'ProductController@create')->name('products.create')
 			->middleware('permission:products.create');
 
@@ -88,4 +91,73 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('products/{product}/edit', 'ProductController@edit')->name('products.edit')
 			->middleware('permission:products.edit');
+
+	//category products
+	Route::post('typepts/store', 'TypeptController@store')->name('typepts.store')
+			->middleware('permission:typepts.create');
+
+	Route::get('typepts', 'TypeptController@index')->name('typepts.index')
+			->middleware('permission:typepts.index');
+
+	Route::post('typepts', 'TypeptController@index')->name('typepts.index')
+			->middleware('permission:typepts.index');
+
+	Route::get('typepts/create', 'TypeptController@create')->name('typepts.create')
+			->middleware('permission:typepts.create');
+
+	Route::get('typepts/{typept}', 'TypeptController@show')->name('typepts.show')
+			->middleware('permission:typepts.show');
+
+	Route::get('typepts/{typept}/edit', 'TypeptController@edit')->name('typepts.edit')
+			->middleware('permission:typepts.edit');
+
+	Route::put('typepts/{typept}', 'TypeptController@update')->name('typepts.update')
+			->middleware('permission:typepts.edit');
+
+	Route::delete('typepts/{typept}', 'TypeptController@destroy')->name('typepts.destroy')
+			->middleware('permission:typepts.destroy');
+
+	//orderps
+	Route::post('orderps/store', 'OrderpController@store')->name('orderps.store')
+			->middleware('permission:orderps.create');
+
+	Route::get('orderps', 'OrderpController@index')->name('orderps.index')
+			->middleware('permission:orderps.index');
+
+	Route::get('orderps/create', 'OrderpController@create')->name('orderps.create')
+			->middleware('permission:orderps.create');
+
+	Route::put('orderps/{orderp}', 'OrderpController@update')->name('orderps.update')
+			->middleware('permission:orderps.edit');
+
+	Route::get('orderps/{orderp}', 'OrderpController@show')->name('orderps.show')
+			->middleware('permission:orderps.show');
+
+	Route::delete('orderps/{orderp}', 'OrderpController@destroy')->name('orderps.destroy')
+			->middleware('permission:orderps.destroy');
+
+	Route::get('orderps/{orderp}/edit', 'OrderpController@edit')->name('orderps.edit')
+			->middleware('permission:orderps.edit');
+
+	//materials
+	Route::post('materials/store', 'MaterialController@store')->name('materials.store')
+			->middleware('permission:materials.create');
+
+	Route::get('materials', 'MaterialController@index')->name('materials.index')
+			->middleware('permission:materials.index');
+
+	Route::get('materials/create', 'MaterialController@create')->name('materials.create')
+			->middleware('permission:materials.create');
+
+	Route::put('materials/{material}', 'MaterialController@update')->name('materials.update')
+			->middleware('permission:materials.edit');
+
+	Route::get('materials/{material}', 'MaterialController@show')->name('materials.show')
+			->middleware('permission:materials.show');
+
+	Route::delete('materials/{material}', 'MaterialController@destroy')->name('materials.destroy')
+			->middleware('permission:materials.destroy');
+
+	Route::get('materials/{material}/edit', 'MaterialController@edit')->name('materials.edit')
+			->middleware('permission:materials.edit');
 });

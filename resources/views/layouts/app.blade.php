@@ -9,8 +9,17 @@
 
     <title>CIFEMA</title>
 
+    <!-- VUE -->
+    <script src="{{ asset('js/vue.js') }}" defer></script>
+
+    <!-- AXIOS -->
+    <script src="{{ asset('js/axios.js') }}" defer></script>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Custom -->
+    <script src="{{ asset('js/custom.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

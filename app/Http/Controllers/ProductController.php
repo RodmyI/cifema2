@@ -12,10 +12,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         session(['page' => 'products', 'page_item' => 'products_index']);
-        $products = Product::paginate();
+
+        $products = Product::query();
+
+        if ( $request->has('name') && trim($request->input('name')) !== '' )
+        {
+            $products = $products->where('name', 'LIKE', trim($request->input('name')) . '%');
+        }
+
+        $products = $products->paginate();
 
         return view('products.index', compact('products'));
     }

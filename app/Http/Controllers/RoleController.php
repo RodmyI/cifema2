@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
 use Illuminate\Http\Request;
@@ -45,12 +46,17 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [
-            'name' => 'required',
-            'email' => 'required|email|unique:roles',
-            'password' => 'required|min:9'
+            'name' => 'required|unique:roles'
         ]);
 
-        $role = Role::create($request->all());
+        $role = new Role;
+
+        $role->name = $request->name;
+        $role->slug = Str::slug($request->name, '-');
+        $role->description = $request->description;
+        $role->special = $request->special;
+
+        $role->save();
 
         //update data roles
         $role->permissions()->sync($request->get('permissions'));

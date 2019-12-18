@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+div.thead-dark{
+    color: #ffffff;
+    background-color: #343a40;
+    border-color: #343a40;
+}
+.table .thead-dark td {
+    color: #ffffff;
+    background-color: #212529;
+    border-color: #383f45;
+}
+.content-wrapper {
+    background: 
+    #e2e3e5;
+}

@@ -113,6 +113,66 @@
                 </a>
               </li>
               @endcan
+              <li class="nav-item">
+                <a href="{{ route('typepts.index') }}" class="nav-link @php if(session('page_item')=='products_cat'){ echo 'active'; } @endphp">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar Categorias</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          @endcan
+          @can('materials.index')
+          <li class="nav-item @php if(session('page')=='materials'){ echo 'menu-open'; } @endphp">
+            <a href="#" class="nav-link @php if(session('page')=='materials'){ echo 'active'; } @endphp">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Materiales
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('materials.index') }}" class="nav-link @php if(session('page_item')=='materials_index'){ echo 'active'; } @endphp">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar Materiales</p>
+                </a>
+              </li>
+              @can('materials.create')
+              <li class="nav-item">
+                <a href="{{ route('materials.create') }}" class="nav-link @php if(session('page_item')=='materials_create'){ echo 'active'; } @endphp">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Añadir Material</p>
+                </a>
+              </li>
+              @endcan
+          </li>
+          @endcan
+            </ul>
+          @can('orderps.index')
+          <li class="nav-item @php if(session('page')=='orderps'){ echo 'menu-open'; } @endphp">
+            <a href="#" class="nav-link @php if(session('page')=='orderps'){ echo 'active'; } @endphp">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Ordenes de Producción
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('orderps.index') }}" class="nav-link @php if(session('page_item')=='orderps_index'){ echo 'active'; } @endphp">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar O.P.</p>
+                </a>
+              </li>
+              @can('orderps.create')
+              <li class="nav-item">
+                <a href="{{ route('orderps.create') }}" class="nav-link @php if(session('page_item')=='orderps_create'){ echo 'active'; } @endphp">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Añadir O.P.</p>
+                </a>
+              </li>
+              @endcan
             </ul>
           </li>
           @endcan
