@@ -36,9 +36,11 @@
               </thead>
               <tbody>
                 @if($roles->count()>0)
+                  @php $page_num = $roles->currentPage();
+                  $row_num = 1 + (($page_num-1) * $roles->perPage()); @endphp
                   @foreach($roles as $role)
                   <tr>
-                    <td>{{ $role->id }}</td>
+                    <td>{{ $row_num }}</td>
                     <td>{{ $role->name }}</td>
                     <td>
                       @can('roles.show')
@@ -54,6 +56,7 @@
                       @endcan
                     </td>
                   </tr>
+                  @php $row_num++; @endphp
                   @endforeach
                 @else
                 <tr>

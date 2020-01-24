@@ -33,9 +33,11 @@
               </thead>
               <tbody>
                 @if($typepts->count()>0)
+                  @php $page_num = $typepts->currentPage();
+                  $row_num = 1 + (($page_num-1) * $typepts->perPage()); @endphp
                   @foreach($typepts as $typept)
                   <tr>
-                    <td>{{ $typept->id }}</td>
+                    <td>{{ $row_num }}</td>
                     <td>{{ $typept->name }}</td>
                     <td>
                       @can('typepts.edit')
@@ -50,6 +52,7 @@
                       @endcan
                     </td>
                   </tr>
+                  @php $row_num++; @endphp
                   @endforeach
                 @else
                 <tr>

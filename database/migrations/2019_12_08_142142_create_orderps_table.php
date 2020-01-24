@@ -17,7 +17,7 @@ class CreateOrderpsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('quantity');
             $table->date('dateinit');
-            $table->integer('number');
+            $table->integer('number')->unique();
             $table->timestamps();
         });
     }

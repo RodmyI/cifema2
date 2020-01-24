@@ -27,6 +27,15 @@
                 <p><strong>Unidad: </strong>{{ $material->unity }}</p>
                 <p><strong>Cantidad Inicial: </strong>{{ $material->quantityinit }}</p>
                 <p><strong>Codigo: </strong>{{ $material->code }}</p>
+                @php
+                  $mymaterial = App\Material::find($material->id);
+                @endphp
+                <p><strong>Categoria: </strong>{{ $mymaterial->typemat->name }}</p>
+                <p><strong>Estado: </strong>@if($material->status)
+                        <span>@php echo 'Habilitado'; @endphp</span>
+                      @else
+                        <span class="text-danger">@php echo 'Deshabilitado'; @endphp</span>
+                      @endif</p>
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">

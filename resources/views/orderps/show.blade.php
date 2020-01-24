@@ -23,10 +23,10 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                <p><strong>Número: </strong>{{ $orderp->number }}</p>
                 <p><strong>Producto: </strong>{{ $product->name }}</p>
                 <p><strong>Cantidad: </strong>{{ $orderp->quantity }}</p>
                 <p><strong>Fecha Inicio: </strong>{{ $orderp->dateinit }}</p>
-                <p><strong>Número: </strong>{{ $orderp->number }}</p>
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">

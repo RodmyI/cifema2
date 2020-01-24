@@ -19,7 +19,12 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('unit');
             $table->integer('cantidadinit');
-            $table->string('code');
+            $table->string('code')->unique();
+            $table->string('price');
+            $table->string('img_prod')->nullable();
+            $table->date('data_sheet')->nullable();
+            $table->integer('stock')->default(0);
+            $table->integer('status')->default(1);
 
             $table->timestamps();
         });

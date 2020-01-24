@@ -18,34 +18,14 @@
     <div class="row">
           <div class="col-md-12">
             <div class="card">
-              <div class="card-header">
+              <div class="card-header thead-dark">
                 <h3 class="card-title"></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form name="f-edit-product" action="{{ route('products.update', $product->id) }}" method="POST">
-                  @method('PUT')
-                  @csrf
-                  <div class="form-group">
-                    <label>Nombre*</label>
-                      <input type="text" name="name" class="form-control" value="{{ $product->name }}" >
-                  </div>
-                  <div class="form-group">
-                    <label>Unidad*</label>
-                      <input type="text" name="unit" class="form-control" value="{{ $product->unit }}" >
-                  </div>
-                  <div class="form-group">
-                    <label>Cantidad Inicial*</label>
-                      <input type="text" name="cantidadinit" class="form-control" value="{{ $product->cantidadinit }}" >
-                  </div>
-                  <div class="form-group">
-                    <label>Codigo*</label>
-                      <input type="text" name="code" class="form-control" value="{{ $product->code }}" >
-                  </div>
-                  <div class="form-group">
-                      <input type="submit" name="Submit" class="btn btn-sm btn-primary" value="Guardar" >
-                  </div>
-                </form>
+                {!! Form::model($product, ['route' => ['products.update', $product->id], 'method' => 'PUT', 'files' => true]) !!}
+                  @include('products.partials.form')
+                {!! Form::close() !!}
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">

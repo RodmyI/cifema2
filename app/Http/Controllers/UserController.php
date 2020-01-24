@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {    
@@ -17,7 +18,7 @@ class UserController extends Controller
     {
         session(['page' => 'users', 'page_item' => 'users_index']);
 
-        $users = User::paginate();
+        $users = User::where('id','<>',1)->paginate();
 
         return view('users.index', compact('users'));
     }
@@ -50,7 +51,11 @@ class UserController extends Controller
             'password' => 'required|min:9'
         ]);
 
-        $user = User::create($request->all());
+        $user = User::create([
+                                'name' => $request->name,
+                                'email' => $request->email,
+                                'password' => Hash::make($request->password),
+                            ]);
 
         //update data roles
         $user->roles()->sync($request->get('roles'));
@@ -99,6 +104,37 @@ class UserController extends Controller
 
         //update data roles
         $user->roles()->sync($request->get('roles'));
+
+        return redirect()->route('users.edit', $user->id)->with('info', 'Datos del usuario actualizado con exito.');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function changePassword(User $user)
+    {
+        session(['page' => 'users', 'page_item' => 'users_edit']);
+
+        return view('users.change', compact('user'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function passwordupdate(Request $request, User $user)
+    {
+        $this->validate(request(), [
+            'password' => 'required|min:9|confirmed'
+        ]);
+
+        $user->update(['password' => Hash::make($request->password)]);
 
         return redirect()->route('users.edit', $user->id)->with('info', 'Datos del usuario actualizado con exito.');
     }

@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-2 col-xs-3">
 		<div class="form-group">
-			{{ Form::label('number', 'Numero*') }}
+			{{ Form::label('number', 'Número*') }}
 		    {{ Form::text('number', null, ['class' => 'form-control', 'required' => 'required']) }}
 		    @error('number')
 		    	<div class="alert alert-danger">{{ $message }}</div>

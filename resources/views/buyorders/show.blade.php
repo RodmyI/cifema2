@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1>Producto</h1>
+            <h1>Orden de Producción</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -23,10 +23,10 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <p><strong>Nombre: </strong>{{ $product->name }}</p>
-                <p><strong>Unidad: </strong>{{ $product->unit }}</p>
-                <p><strong>Cantidad Inicial: </strong>{{ $product->cantidadinit }}</p>
-                <p><strong>Codigo: </strong>{{ $product->code }}</p>
+                <p><strong>Producto: </strong>{{ $product->name }}</p>
+                <p><strong>Cantidad: </strong>{{ $orderp->quantity }}</p>
+                <p><strong>Fecha Inicio: </strong>{{ $orderp->dateinit }}</p>
+                <p><strong>Número: </strong>{{ $orderp->number }}</p>
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
@@ -37,6 +37,6 @@
         </div>
         <!-- /.row -->
   </div>
-</div>
+</section>
 
 @endsection

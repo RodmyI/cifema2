@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddOrderpIdAtStandards extends Migration
+class AddTypeptIdAtProduct extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class AddOrderpIdAtStandards extends Migration
      */
     public function up()
     {
-        Schema::table('standards', function(Blueprint $table){
-            $table->bigInteger('orderp_id')->unsigned()->nullable()->after('id');
+        Schema::table('products', function(Blueprint $table){
+            $table->bigInteger('typept_id')->unsigned()->nullable()->after('id');
 
-            $table->foreign('orderp_id')->references('id')->on('orderps')->onUpdate('cascade');
+            $table->foreign('typept_id')->references('id')->on('typepts')->onDelete('set null')->onUpdate('cascade');
             //->onDelete()->onUpdate();
         });
     }

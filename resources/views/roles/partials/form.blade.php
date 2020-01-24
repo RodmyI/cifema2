@@ -21,17 +21,38 @@
 <hr>
 <h5>Lista de Permisos</h5>
 <div class="form-group">
-	<ul class="list-unstyled">
+<div class="row row_group_permss">
+		@php $my_slug = ''; $bandslug = false; @endphp
 		@foreach($permissions as $permission)
+			@php  $arr_slug = explode('.',$permission->slug)[0]; @endphp
+			@if($my_slug != $arr_slug)
+				@if($my_slug!='')
+							</ul>
+						</div>
+					</div>
+				@endif
+				@php 
+				$bandslug = true;
+				$my_slug = explode('.',$permission->slug)[0];
+				@endphp
+				<div class="col-md-3 col-xs-12">
+					<div class="card_rols">
+					<h5>{{ $permission->type }}</h5>
+					<ul class="list-unstyled">
+			@endif
 			<li>
-				<label>
+				<label>	
 					{{ Form::checkbox('permissions[]', $permission->id, null) }}
 					{{ $permission->name }}
-					<em>{{ $permission->description ?: 'N/A' }}</em>
 				</label>
 			</li>
 		@endforeach
-	</ul>
+			@if($bandslug)
+						</ul>
+					</div>
+				</div>
+			@endif
+</div>
 </div>
 <div class="form-group">
     {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}

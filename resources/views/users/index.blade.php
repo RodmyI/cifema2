@@ -26,51 +26,59 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <table class="table table-bordered table-striped table-hover">
-              <thead class="thead-dark">                  
-                <tr>
-                  <th style="width: 10px">#</th>
-                  <th>Nombre</th>
-                  <th width="135px">&nbsp;</th>
-                </tr>
-              </thead>
-              <tbody>
-                @if($users->count()>0)
-                  @foreach($users as $user)
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover">
+                <thead class="thead-dark">                  
                   <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>
-                      @can('users.show')
-                      <a href="{{ route('users.show', $user->id) }}" class="btn btn-secondary btn-sm" title="Ver"><i class="fas fa-eye"></i></a>
-                      @endcan
-                      @can('users.edit')
-                      <a href="{{ route('users.edit', $user->id) }}" class="btn btn-success btn-sm" title="Editar"><i class="fas fa-edit"></i></a>
-                      @endcan
-                      @can('users.destroy')
-                      <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: inline;">
-                        {{ csrf_field() }}
-                  		  <input type="hidden" name="_method" value="DELETE">
-                  		  <button class="btn btn-sm btn-danger" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
-                      </form>
-                      @endcan
-                    </td>
+                    <th style="width: 10px">#</th>
+                    <th>Nombre</th>
+                    <th width="165px">&nbsp;</th>
                   </tr>
-                  @endforeach
-                @else
-                <tr>
-                  <td colspan="3">No se tienen elementos.</td>
-                </tr>
-                @endif
-              </tbody>
-              <tfoot class="thead-dark">
-                <tr>
-                  <td>#</td>
-                  <td>Nombre</td>
-                  <td>&nbsp;</td>
-                </tr>
-              </tfoot>
-            </table>
+                </thead>
+                <tbody>
+                  @if($users->count()>0)
+                    @php $page_num = $users->currentPage();
+                    $row_num = 1 + (($page_num-1) * $users->perPage()); @endphp
+                    @foreach($users as $user)
+                    <tr>
+                      <td>{{ $row_num }}</td>
+                      <td>{{ $user->name }}</td>
+                      <td>
+                        @can('users.edit')
+                        <a href="{{ route('users.password', $user->id) }}" class="btn btn-success btn-sm" title="Cambiar Contrase&ntilde;a"><i class="fa fa-key" aria-hidden="true"></i></a>
+                        @endcan
+                        @can('users.show')
+                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-secondary btn-sm" title="Ver"><i class="fas fa-eye"></i></a>
+                        @endcan
+                        @can('users.edit')
+                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-success btn-sm" title="Editar"><i class="fas fa-edit"></i></a>
+                        @endcan
+                        @can('users.destroy')
+                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: inline;">
+                          {{ csrf_field() }}
+                    		  <input type="hidden" name="_method" value="DELETE">
+                    		  <button class="btn btn-sm btn-danger" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+                        </form>
+                        @endcan
+                      </td>
+                    </tr>
+                    @php $row_num++; @endphp
+                    @endforeach
+                  @else
+                  <tr>
+                    <td colspan="3">No se tienen elementos.</td>
+                  </tr>
+                  @endif
+                </tbody>
+                <tfoot class="thead-dark">
+                  <tr>
+                    <td>#</td>
+                    <td>Nombre</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
           </div>
           <!-- /.card-body -->
           <div class="card-footer clearfix">

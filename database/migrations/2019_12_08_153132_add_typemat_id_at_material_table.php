@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTypeptIdAtProduct extends Migration
+class AddTypematIdAtMaterialTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class AddTypeptIdAtProduct extends Migration
      */
     public function up()
     {
-        Schema::table('products', function(Blueprint $table){
-            $table->bigInteger('typept_id')->unsigned()->nullable()->after('id');
+        Schema::table('materials', function(Blueprint $table){
+            $table->bigInteger('typemat_id')->unsigned()->nullable()->after('id');
 
-            $table->foreign('typept_id')->references('id')->on('typepts')->onUpdate('cascade');
-            //->onDelete()->onUpdate();
+            $table->foreign('typemat_id')->references('id')->on('typemats')->onDelete('set null')->onUpdate('cascade');
         });
     }
 

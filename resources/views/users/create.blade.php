@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-12">
-        <h1></h1>
+        <h1>Añadir</h1>
       </div>
     </div>
   </div><!-- /.container-fluid -->
@@ -18,8 +18,8 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Añadir</h3>
+          <div class="card-header thead-dark">
+            <h3 class="card-title"></h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -34,7 +34,7 @@
                   <input type="email" name="email" class="form-control" value="" required="required" >
               </div>
               <div class="form-group">
-                <label for="password">Contraceña:</label>
+                <label for="password">Contraseña:</label>
                 <input type="password" class="form-control" name="password" value="">
               </div>
               <hr>
